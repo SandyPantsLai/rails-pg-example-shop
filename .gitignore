@@ -27,5 +27,4 @@
 /config/master.key
 
 # Ignore files added from running generators, i.e. bundle exec rails g spree:install
-db/migrate
 /public/spree
