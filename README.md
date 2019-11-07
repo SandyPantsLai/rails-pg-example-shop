@@ -1,6 +1,6 @@
 # Rails E-commerce Heroku Example App
 
-This e-commerce app is built with [Solidus](https://github.com/solidusio/solidus) with Ruby 2.6.4, Rails 5 and Puma 4. It is intended to demo different best practices and use cases in the context of working with Heroku. 
+This e-commerce app with sample data is built with [Solidus](https://github.com/solidusio/solidus) with Ruby 2.6.4, Rails 5 and Puma 4. It is intended to demo different best practices and use cases in the context of working with Heroku. 
 
 The master branch contains the base e-commerce store to be deployed on the Heroku [Common Runtime](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime). Future branches that remain unmerged represent different versions of this demo store, i.e. one meant for deploy on [Private Spaces](https://devcenter.heroku.com/articles/dyno-runtime#private-spaces-runtime), one that uses Sidekiq for background jobs, one to set up a scenario with bad database queries etc.
 
@@ -34,7 +34,7 @@ Future branches will have their own buttons for deployment listed here so you ca
 
 1. Clone this repo
 2. Ensure you have [Imagemagick](https://imagemagick.org/script/download.php) installed omn your machine, which is required for Paperclip.
-3. Run `bundle install`
+3. Run `bundle install` and `bundle exec db:create`
 4. Now run these generators that set up config and migrations, and then run the migrations:
 ```
 bundle exec rails g spree:install
@@ -43,9 +43,8 @@ bundle exec rake railties:install:migrations
 bundle exec rake db:migrate
 ```
 
-You can now launch the app with `bundle exec rails s` and view the frontend at http://localhost:3000/. The admin UI can be found at http://localhost:3000/admin/. 
+You can now launch the app with `bundle exec puma -C config/puma.rb` and view the frontend at http://localhost:3000/. The admin UI can be found at http://localhost:3000/admin/. 
 
 ## To Do
 - Add more versions of this store as new branches
 - Update to Rails 6 once the new version of `solidus-auth-devise` is out (so v2.3.0+) which should include a fix for this [issue](https://github.com/solidusio/solidus_auth_devise/issues/174) preventing the app from running properly on Heroku with Rails 6.
-

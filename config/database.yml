@@ -82,4 +82,4 @@ production:
   <<: *default
   database: rails-pg-example-shop_production
   username: rails-pg-example-shop
-  password: <%= ENV['RAILS-PG-EXAMPLE-SHOP_DATABASE_PASSWORD'] %>
+  password: <%= ENV['RAILS_PG_EXAMPLE_SHOP_DATABASE_PASSWORD'] %>

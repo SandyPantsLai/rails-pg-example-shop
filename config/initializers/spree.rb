@@ -18,17 +18,6 @@ Spree.config do |config|
   # any inventory changes.
   # config.inventory_cache_threshold = 3
 
-  # Enable Paperclip adapter for attachments on images and taxons
-  config.image_attachment_module = 'Spree::Image::PaperclipAttachment'
-  config.taxon_attachment_module = 'Spree::Taxon::PaperclipAttachment'
-
-
-  # Permission Sets:
-
-  # Uncomment and customize the following line to add custom permission sets
-  # to a custom users role:
-  # config.roles.assign_permissions :role_name, ['Spree::PermissionSets::CustomPermissionSet']
-
 
   # Frontend:
 
@@ -47,11 +36,8 @@ Spree.config do |config|
   # Gateway credentials can be configured statically here and referenced from
   # the admin. They can also be fully configured from the admin.
   #
-  # Please note that you need to use the solidus_stripe gem to have
-  # Stripe working: https://github.com/solidusio-contrib/solidus_stripe
-  #
   # config.static_model_preferences.add(
-  #   Spree::PaymentMethod::StripeCreditCard,
+  #   Spree::Gateway::StripeGateway,
   #   'stripe_env_credentials',
   #   secret_key: ENV['STRIPE_SECRET_KEY'],
   #   publishable_key: ENV['STRIPE_PUBLISHABLE_KEY'],
@@ -66,24 +52,10 @@ end
 
 Spree::Backend::Config.configure do |config|
   config.locale = 'en'
-
-  # Uncomment and change the following configuration if you want to add
-  # a new menu item:
-  #
-  # config.menu_items << config.class::MenuItem.new(
-  #   [:section],
-  #   'icon-name',
-  #   url: 'https://solidus.io/'
-  # )
 end
 
 Spree::Api::Config.configure do |config|
   config.requires_authentication = true
 end
 
-Spree.user_class = "Spree::LegacyUser"
-
-# If you want to add a field to the whitelisted ransackable attributes,
-# just uncomment the following code and change it as you need.
-#
-# Spree::Model.whitelisted_ransackable_attributes << 'field'
+Spree.user_class = "Spree::User"

@@ -36,6 +36,13 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Assets like product images are hosted on Cloudinary when run in Heroku
+group :production do
+  gem 'cloudinary', '~> 1.11'
+  gem 'paperclip-cloudinary'
+end
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -64,9 +71,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Solidus Ecommerce Open Source (solidus.io)
 gem 'solidus'
 gem 'solidus_auth_devise'
-
-# Assets like product images are hosted on Cloudinary when run in Heroku
-group :heroku do
-  gem 'cloudinary', '~> 1.11'
-  gem 'paperclip-cloudinary'
-end

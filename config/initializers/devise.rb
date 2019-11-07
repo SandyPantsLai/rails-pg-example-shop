@@ -1,3 +1,1 @@
-# frozen_string_literal: true
-
-Devise.secret_key = SecureRandom.hex(50).inspect
+Devise.secret_key = ENV['DEVISE_SECRET_KEY'] || "96c9ac4acc9d61aa62df4b7e1123e584586a4a766c6e0d1bd358f7317f9cd778aa160ca42242f96baae88d181375939c0d65"
