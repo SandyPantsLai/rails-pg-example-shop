@@ -60,3 +60,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Solidus Ecommerce Open Source (solidus.io)
+gem 'solidus'
+gem 'solidus_auth_devise'
+
+# Assets like product images are hosted on Cloudinary when run in Heroku
+group :heroku do
+  gem 'cloudinary', '~> 1.11'
+  gem 'paperclip-cloudinary'
+end
