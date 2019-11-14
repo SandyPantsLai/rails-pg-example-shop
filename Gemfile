@@ -71,3 +71,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Solidus Ecommerce Open Source (solidus.io)
 gem 'solidus'
 gem 'solidus_auth_devise'
+
+# New Relic APM agent for Ruby
+gem 'newrelic_rpm'
