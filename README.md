@@ -19,16 +19,17 @@ A [`free` dyno](https://devcenter.heroku.com/articles/dyno-types) will be used t
 
 ## Deployment
 
-Use this button below to deploy the basic version of the store:
+Use this button below to deploy the *core* version of the store:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master)
 
-Future branches will have their own buttons for deployment listed here so you can set up a fresh app for each situation if you wish.
+Each branch also has its own button for deployment listed on their respective READMEs.
 
 ## After Deployment
 
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
 - You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin.
+- You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like [loader.io](https://devcenter.heroku.com/articles/loaderio#installing-the-loader-io-add-on) instead.
 
 ## Local Development
 
@@ -44,6 +45,8 @@ bundle exec rake db:migrate
 ```
 
 You can now launch the app with `bundle exec puma -C config/puma.rb` and view the frontend at http://localhost:3000/. The admin UI can be found at http://localhost:3000/admin/. 
+
+If you want to customize Solidus see their [docs](https://guides.solidus.io/developers/customizations/overview.html). This is an example of [adding a new route](https://github.com/solidusio/solidus/issues/1704#issuecomment-303092098).
 
 ## To Do
 - Add more versions of this store as new branches
