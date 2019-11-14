@@ -47,6 +47,9 @@
         "description": "Secret key for salting passwords.",
         "generator": "secret"
       },
+      "PG_APP_NAME": {
+        "value": "DYNO"
+      },
       "RAILS_LOG_TO_STDOUT": {
         "value": "true"
       },

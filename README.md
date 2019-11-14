@@ -4,7 +4,7 @@ This e-commerce app with sample data is built with [Solidus](https://github.com/
 
 The master branch contains the base e-commerce store to be deployed on the Heroku [Common Runtime](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime). Future branches that remain unmerged represent different versions of this demo store, i.e. one meant for deploy on [Private Spaces](https://devcenter.heroku.com/articles/dyno-runtime#private-spaces-runtime), one that uses Sidekiq for background jobs, one to set up a scenario with bad database queries etc.
 
-A [`free` dyno](https://devcenter.heroku.com/articles/dyno-types) will be used to run your app when you use the Deploy to Heroku button below. The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be provisioned. Only the free tiers of each are provisioned by default. You may need to upgrade these to paid plans in order to apply certain best practices, i.e. Postgres metrics are not available on the `hobby-dev` plan so you can't really monitor Postgres without upgrading. 
+A [`free` (if used in Personal account) or `standard-1x` (if app created in Enterprise Team) dyno](https://devcenter.heroku.com/articles/dyno-types) will be used to run your app when you use the Deploy to Heroku button below.  The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be provisioned. Only the free tiers of each are provisioned by default. You may need to upgrade these to paid plans in order to apply certain best practices, i.e. Postgres metrics are not available on the `hobby-dev` plan so you can't really monitor Postgres without upgrading. 
 
 ## Default Add-ons:
 
