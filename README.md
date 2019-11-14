@@ -1,8 +1,8 @@
 # Rails E-commerce Heroku Example App
 
-This e-commerce app with sample data is built with [Solidus](https://github.com/solidusio/solidus) with Ruby 2.6.4, Rails 5 and Puma 4 and Sidekiq. It is intended to demo different best practices and use cases in the context of working with Heroku. 
+This e-commerce app with sample data is built with [Solidus](https://github.com/solidusio/solidus) with Ruby 2.6.4, Rails 5 and Puma 4 and Sidekiq. It is intended for use with troubleshooting connection pooling and trying out best practices.
 
-The master branch contains the core e-commerce store to be deployed on the Heroku [Common Runtime](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime). Future branches that remain unmerged represent different versions of this demo store, i.e. with `pgbouncer`.
+This `pgbouncer` branch contains the core e-commerce store + `pgbouncer` to be deployed on the Heroku [Common Runtime](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime). See other branches for different app versions.
 
 A [`free` (if used in Personal account) or `standard-1x` (if app created in Enterprise Team) dyno](https://devcenter.heroku.com/articles/dyno-types) will be used to run your app when you use the Deploy to Heroku button below. A `free`/`standard-1x` worker dyno is also used, though you need to scale this up manually after deployment. 
 
@@ -11,7 +11,7 @@ The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be p
 ## Default Add-ons:
 
 ##### Necessary for App Functionality
-- [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) - [`hobby-dev` plan](https://elements.heroku.com/addons/heroku-postgresql), Postgres version 11: Primary database for the app
+- [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) - [`standard-0` plan](https://elements.heroku.com/addons/heroku-postgresql), Postgres version 11: Primary database for the app
 - [Cloudinary](https://devcenter.heroku.com/articles/cloudinary) - [`starter` plan](https://elements.heroku.com/addons/cloudinary): For static assets, i.e. the product images
 - [Heroku Redis](https://devcenter.heroku.com/articles/heroku-redis) - [`hobby-dev` plan](https://elements.heroku.com/addons/heroku-redis) used by Sidekiq
 
@@ -22,11 +22,11 @@ The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be p
 
 ## Deployment
 
-Use this button below to deploy the *core* version of the store.
+Use this button below to deploy the `pgbouncer` version of the store:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/pgbouncer)
 
-Each branch also has its own button for deployment listed on their respective READMEs.
+Other branches have their own buttons for deployment listed on the `master` branch's `README` file so you can set up a fresh app for each situation if you wish.
 
 ## After Deployment
 
@@ -52,6 +52,7 @@ Each branch also has its own button for deployment listed on their respective RE
 - You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) 
 - If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like loader.io instead. See setup instructions [here](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md). 
 - You could also deploy [this](https://github.com/tsykoduk/Mjolnir) as a separate Heroku app, update `TARGETS` with your app's endpoints and scale up its workers to send traffic.
+- You can access your `pgbouncer` stats by running [Heroku Exec](https://devcenter.heroku.com/articles/exec), followed by this command to access your special [`pgbouncer` "database"](https://www.pgbouncer.org/usage.html#admin-console): `psql -h /tmp -p 6000 -d pgbouncer -U pgbouncer` (the buildpack sets [6000 as the `listen_port`](https://github.com/heroku/heroku-buildpack-pgbouncer/blob/master/bin/gen-pgbouncer-conf.sh#L17)). More info about how to read these stats can be found [here](https://heap.io/blog/engineering/decrypting-pgbouncers-diagnostic-information).
 
 ## Local Development
 

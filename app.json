@@ -13,7 +13,7 @@
     ],
     "addons": [
       {
-        "plan": "heroku-postgresql",
+        "plan": "heroku-postgresql:standard-0",
         "options": {
           "version": "11"
         }
@@ -30,6 +30,9 @@
       },
       {
         "url": "heroku/nodejs"
+      },
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-pgbouncer"
       },
       {
         "url": "heroku/ruby"
@@ -50,6 +53,15 @@
       "DEVISE_SECRET_KEY": {
         "description": "Secret key for salting passwords.",
         "generator": "secret"
+      },
+      "PGBOUNCER_DEFAULT_POOL_SIZE": {
+        "value": "5"
+      },
+      "PGBOUNCER_RESERVE_POOL_SIZE": {
+        "value": "1"
+      },
+      "PGBOUNCER_MAX_CLIENT_CONN": {
+        "value": "100"
       },
       "RAILS_LOG_TO_STDOUT": {
         "value": "true"
