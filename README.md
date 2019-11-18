@@ -29,7 +29,7 @@ Each branch also has its own button for deployment listed on their respective RE
 
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
 - You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin.
-- You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like [loader.io](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md) instead.
+- You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like loader.io instead. See setup instructions [here](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md).
 
 ## Local Development
 
