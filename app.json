@@ -32,7 +32,7 @@
       }
     ],
     "scripts": {
-      "postdeploy": "bin/rails db:migrate && bin/rails db:seed spree_sample:load"
+      "postdeploy": "bin/rails db:seed spree_sample:load"
     },
     "env": {
       "ADMIN_EMAIL": {
@@ -46,9 +46,6 @@
       "DEVISE_SECRET_KEY": {
         "description": "Secret key for salting passwords.",
         "generator": "secret"
-      },
-      "PG_APP_NAME": {
-        "value": "DYNO"
       },
       "RAILS_LOG_TO_STDOUT": {
         "value": "true"
