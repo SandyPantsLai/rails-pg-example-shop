@@ -33,14 +33,13 @@ Each branch also has its own button for deployment listed on their respective RE
 
 ## Local Development
 
-1. Clone this repo
+1. Clone this repo and cd into the directory
 2. Ensure you have [Imagemagick](https://imagemagick.org/script/download.php) installed omn your machine, which is required for Paperclip.
-3. Run `bundle install` and `bundle exec db:create`
-4. Now run these generators that set up config and migrations, and then run the migrations:
+3. Run `bundle install` and `bundle exec rake db:create`
+4. Now run these generators that set up config, and then run the migrations:
 ```
 bundle exec rails g spree:install
 bundle exec rails g solidus:auth:install
-bundle exec rake railties:install:migrations
 bundle exec rake db:migrate
 ```
 
