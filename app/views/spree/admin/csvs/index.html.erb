@@ -1,8 +1,16 @@
-<h1>Spree::Admin::Csvs#index</h1>
-<p>Find me in app/views/spree/admin/csvs/index.html.erb</p>
-<%= form_tag({:action => :import}, multipart: true) do %>
-	<%= radio_button_tag(:resource_name, "Product", :checked => true) %>
-	<%= label_tag(:resource_name_product, "Product") %>
-  <%= file_field_tag :file %>
-  <%= submit_tag( "Import" ) %>
-<% end %>
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb("CSVs") %>
+
+<fieldset data-hook="import_csvs">
+	<legend align="center">Import CSVs</legend>
+	<h6>Select a resource type and a file to upload:</h6>
+	<%= form_tag({:action => :import}, multipart: true) do %>
+		<%= select_tag(:resource_name, options_for_select(@importable_resources)) %>
+	  <%= file_field_tag :file, :accept => 'text/csv' %>
+	  <div class="actions" data-hook="import_csvs_buttons">
+	  	<%= submit_tag("Import", :class => "btn btn-primary") %>
+	  </div>
+	<% end %>
+</fieldset>
+

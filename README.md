@@ -21,7 +21,7 @@ A [`free` (if used in Personal account) or `standard-1x` (if app created in Ente
 
 Use this button below to deploy the *core* version of the store:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/CSVs)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master)
 
 Each branch also has its own button for deployment listed on their respective READMEs.
 
