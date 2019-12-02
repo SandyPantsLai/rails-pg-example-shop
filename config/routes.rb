@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   Spree::Core::Engine.routes.draw do
     namespace :admin do
       get "csvs" => "csvs#index"
-      post "csvs", to: "csvs#import"
+      post "csvs", to: "csvs#upload"
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

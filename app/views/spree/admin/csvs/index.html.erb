@@ -5,9 +5,9 @@
 <fieldset data-hook="import_csvs">
 	<legend align="center">Import CSVs</legend>
 	<h6>Select a resource type and a file to upload:</h6>
-	<%= form_tag({:action => :import}, multipart: true) do %>
+	<%= form_tag({:action => :upload}, multipart: true) do %>
 		<%= select_tag(:resource_name, options_for_select(@importable_resources)) %>
-	  <%= file_field_tag :file, :accept => 'text/csv' %>
+		<%= file_field_tag :file, :accept => 'text/csv' %>
 	  <div class="actions" data-hook="import_csvs_buttons">
 	  	<%= submit_tag("Import", :class => "btn btn-primary") %>
 	  </div>

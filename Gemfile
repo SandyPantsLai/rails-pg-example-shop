@@ -73,5 +73,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'solidus'
 gem 'solidus_auth_devise'
 
+# Sidekiq gem for background job processing
+gem 'sidekiq'
+
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'
