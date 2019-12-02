@@ -46,6 +46,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0.beta2', require: false
 end
 
 group :development do
@@ -71,6 +72,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Solidus Ecommerce Open Source (solidus.io)
 gem 'solidus'
 gem 'solidus_auth_devise'
+
+# Sidekiq gem for background job processing
+gem 'sidekiq'
 
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'

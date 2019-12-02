@@ -52,6 +52,11 @@ end
 
 Spree::Backend::Config.configure do |config|
   config.locale = 'en'
+  config.menu_items << config.class::MenuItem.new(
+    [:csvs], 
+    'file',
+    condition: -> { Spree.user_class && can?(:admin, Spree.user_class) }, 
+    url: :admin_csvs_path)
 end
 
 Spree::Api::Config.configure do |config|

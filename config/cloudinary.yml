@@ -1,0 +1,7 @@
+<% cloudinary_config = URI.parse ENV.fetch("CLOUDINARY_URL"){ Rails.env.production? ? raise : "" } %>
+
+production:
+  cloud_name: <%= cloudinary_config.host %>
+  api_key: <%= cloudinary_config.user %>
+  api_secret: <%= cloudinary_config.password %>
+  secure: true
