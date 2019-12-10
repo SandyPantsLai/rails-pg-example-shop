@@ -1,32 +1,29 @@
+require 'daru'
 require 'open-uri'
 
 class CsvImportWorker < CsvWorker
   def perform(csv_path, resource_name)
-  	@model_class = "Spree::#{resource_name.classify}".constantize
-   	csv_text = open(csv_path)
-		csv = CSV.parse(csv_text, :headers=>true, :encoding => "UTF-8")
-		csv.each.with_index(2) do |row, row_num|
-    	row_data = transform_data(resource_name, row.to_h)
-      puts "Creating with data from row #{row_num}..."
-      puts row_data
-      puts @model_class.create!(row_data)
-      rescue ActiveRecord::RecordInvalid => e
-      	puts "Row #{row_num}: #{e.to_s}"
-    end
-  end
-
-  def transform_data(resource_name, data)
     fields_with_human_friendly_data = {
       "Product" => ["shipping_category", "tax_category"]
     }
 
-    fields_with_human_friendly_data[resource_name].each do |field|
-      if data[field]
+  	model_class = "Spree::#{resource_name.classify}".constantize
+
+    df = Daru::DataFrame.from_csv(csv_path)
+
+    fields_with_human_friendly_data[resource_name].each do |field| 
+      df.uniq(field)[field].each do |field_data| 
         field_class = "Spree::#{field.classify}".constantize
-        data[field] = field_class.where(name: data[field]).first_or_create!
+        df[field].replace_values(field_data,field_class.where(name: field_data).first_or_create!)
       end
     end
-    return data
+
+    df.each(:row).with_index(2) do |row, row_num|
+      @model_class.create!(row.to_h)
+      puts "#{model_class} created with data from row #{row_num}...\n"
+      rescue ActiveRecord::RecordInvalid => e
+        puts "Row #{row_num}: #{e.to_s}\n"
+    end
   end
 
 end
