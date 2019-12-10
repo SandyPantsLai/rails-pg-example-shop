@@ -22,27 +22,11 @@ class CsvImportWorker < CsvWorker
 
     fields_with_human_friendly_data[resource_name].each do |field|
       if data[field]
-        begin
-          data[field] = Integer(data[field])
-        rescue
-          field_class = "Spree::#{field.classify}".constantize
-          data[field] = find_or_create_by_name(field_class, data[field])
-        end
+        field_class = "Spree::#{field.classify}".constantize
+        data[field] = field_class.where(name: data[field]).first_or_create!
       end
     end
     return data
-  end
-
-  def find_or_create_by_name(field_class, data)
-    begin
-      field_obj = field_class.find_by!(name: data)
-    rescue ActiveRecord::RecordNotFound => e
-      puts "#{e.to_s}"
-      puts "Creating #{field_class} with name #{data}..."
-      field_class.create!({name: data})
-      field_obj = field_class.find_by!(name: data)
-    end
-    return field_obj
   end
 
 end
