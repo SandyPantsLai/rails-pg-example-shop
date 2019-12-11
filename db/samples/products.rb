@@ -7,6 +7,8 @@ data_transformer = DataTransformer.new
 resource_creator = ResourceCreator.new
 model_class = "Spree::Product".constantize
 
-df = data_transformer.replace_names_with_object(csv_path, "Product")
-resource_creator.create_objects_from_dataframe("Product", df)
+df = Daru::DataFrame.from_csv(csv_path)
+df = data_transformer.replace_names_with_object(df, "Product")
+
+resource_creator.create_objects_from_dataframe(df, "Product")
 

@@ -5,11 +5,12 @@ module StoreSample
   class Engine < Rails::Engine
     engine_name 'store_sample'
 
-    def self.load_samples
+    def self.load_initial_samples
       Store::Sample.load_sample('taxonomies')
       Store::Sample.load_sample('taxons')
+      Store::Sample.load_sample('stock_locations')
+      Store::Sample.load_sample('properties')
       Store::Sample.load_sample('products')
-
       Spree::Sample.load_sample('addresses')
       Spree::Sample.load_sample('payment_methods')
       Spree::Sample.load_sample('shipping_categories')

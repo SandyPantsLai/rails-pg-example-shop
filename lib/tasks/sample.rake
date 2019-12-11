@@ -3,7 +3,7 @@ require 'store_sample'
 
 namespace :store_sample do
   desc 'Loads sample data'
-  task load: :environment do
+  task load_initial: :environment do
     if ARGV.include?('db:migrate')
       puts %Q{
 Please run db:migrate separately from store_sample:load.
@@ -14,6 +14,6 @@ Migrations have been run. Please run 'rake store_sample:load' by itself now.
       exit(1)
     end
 
-    StoreSample::Engine.load_samples
+    StoreSample::Engine.load_initial_samples
   end
 end

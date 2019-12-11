@@ -6,8 +6,7 @@ class DataTransformer
     }
   end
 
-  def replace_names_with_object(csv_path, resource_type)
-    df = Daru::DataFrame.from_csv(csv_path)
+  def replace_names_with_object(df, resource_type)
     @fields_to_replace[resource_type].each do |field|
       field_class = "Spree::#{field.classify}".constantize
       unique_fields = df.uniq(field)[field]
