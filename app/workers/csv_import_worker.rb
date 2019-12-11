@@ -1,4 +1,3 @@
-require 'daru'
 require 'open-uri'
 
 class CsvImportWorker < CsvWorker
@@ -9,8 +8,9 @@ class CsvImportWorker < CsvWorker
 
   	model_class = "Spree::#{resource_name.classify}".constantize
 
-    df = Daru::DataFrame.from_csv(csv_path)
-    df = replace_human_friendly_data(df, fields_to_replace[resource_name])
+    data_transformer = Spree::Admin::CsvsHelper::DataTransformer.new
+
+    df = data_transformer.replace_human_friendly_data(csv_path, fields_to_replace[resource_name])
 
     df.each(:row).with_index(2) do |row, row_num|
       model_class.create!(row.to_h)
@@ -18,15 +18,4 @@ class CsvImportWorker < CsvWorker
         puts "Row #{row_num}: #{e.to_s}\n"
     end
   end
-
-  def replace_human_friendly_data(df, fields)
-    fields.each do |field| 
-      df.uniq(field)[field].each do |field_data| 
-        field_class = "Spree::#{field.classify}".constantize
-        df[field].replace_values(field_data,field_class.where(name: field_data).first_or_create!)
-      end
-    end
-    return df
-  end
-
 end
