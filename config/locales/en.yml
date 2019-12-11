@@ -35,5 +35,6 @@ en:
       tab:
         csvs: CSVs
     taxonomies:
+      category: Category
       parts: Parts
       themes: Themes
