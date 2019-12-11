@@ -3,7 +3,7 @@ require 'cloudinary'
 class Spree::Admin::CsvsController < Spree::Admin::BaseController
 
   def index
-  	@importable_resources = ["Product", "Order"]
+  	@importable_resources = ["Product"]
   end
 
   def upload

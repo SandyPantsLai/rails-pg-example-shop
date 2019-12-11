@@ -19,7 +19,7 @@ class CsvImportWorker < CsvWorker
     end
 
     df.each(:row).with_index(2) do |row, row_num|
-      @model_class.create!(row.to_h)
+      model_class.create!(row.to_h)
       puts "#{model_class} created with data from row #{row_num}...\n"
       rescue ActiveRecord::RecordInvalid => e
         puts "Row #{row_num}: #{e.to_s}\n"
