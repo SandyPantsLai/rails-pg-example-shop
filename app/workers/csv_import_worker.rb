@@ -1,21 +1,16 @@
 require 'open-uri'
+require 'data_transformer'
+require 'resource_creator'
 
 class CsvImportWorker < CsvWorker
-  def perform(csv_path, resource_name)
-    fields_to_replace = {
-      "Product" => ["shipping_category", "tax_category"]
-    }
+  def perform(csv_path, resource_type)
 
-  	model_class = "Spree::#{resource_name.classify}".constantize
+    data_transformer = DataTransformer.new
 
-    data_transformer = Spree::Admin::CsvsHelper::DataTransformer.new
+    df = data_transformer.replace_names_with_object(csv_path, resource_type)
 
-    df = data_transformer.replace_human_friendly_data(csv_path, fields_to_replace[resource_name])
+    resource_creator = ResourceCreator.new
 
-    df.each(:row).with_index(2) do |row, row_num|
-      model_class.create!(row.to_h)
-      rescue ActiveRecord::RecordInvalid => e
-        puts "Row #{row_num}: #{e.to_s}\n"
-    end
+    resource_creator.create_objects_from_dataframe(resource_type, df)
   end
 end
