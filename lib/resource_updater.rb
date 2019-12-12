@@ -1,5 +1,5 @@
 class ResourceUpdater
-  def self.update_product_related_properties(row_hash, product)
+  def update_product_related_properties(row_hash, product)
     if row_hash["taxon"] then
       row_hash["taxon"].products << product
     end
@@ -12,9 +12,13 @@ class ResourceUpdater
 
     if row_hash["available_on"] then
     	product.available_on = Time.parse(row_hash["available_on"])
-    	product.save!
-    	# rescue
-    	# 	puts "Invalid date format"
+  		product.save!
     end
+
+    ["condition", "num_parts", "set_num", "year"].each do |property|
+	    if row_hash[property] then
+	    	product.set_property(property, row_hash[property])
+	    end
+  	end
   end
 end

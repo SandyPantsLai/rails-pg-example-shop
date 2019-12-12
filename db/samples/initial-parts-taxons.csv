@@ -1,5 +1,5 @@
-name,parent
-Bricks,
-Plates,
-Tiles,
-Bricks Curved,Bricks
+name,parent,taxonomy
+Bricks,,Parts
+Plates,,Parts
+Tiles,,Parts
+Bricks Curved,Bricks,Parts

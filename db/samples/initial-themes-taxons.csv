@@ -1,133 +1,76 @@
-name,parent
-Airport,City
-Arctic,City
-Cargo,City
-Coast Guard,City
-Construction,City
-Farm,City
-Fire,City
-Harbor,City
-Hospital,City
-Jungle,City
-Off-Road,City
-Police,City
-Space Port,City
-Supplemental,City
-Traffic,City
-Trains,City
-DFB Minifigures,Collectible Minifigures
-Disney Series 1,Collectible Minifigures
-Disney Series 2,Collectible Minifigures
-Harry Potter and Fantastic Beasts,Collectible Minifigures
-Ninjago The Movie,Collectible Minifigures
-Series 1 Minifigures,Collectible Minifigures
-Series 10 Minifigures,Collectible Minifigures
-Series 11 Minifigures,Collectible Minifigures
-Series 12 Minifigures,Collectible Minifigures
-Series 13 Minifigures,Collectible Minifigures
-Series 14 Minifigures,Collectible Minifigures
-Series 15 Minifigures,Collectible Minifigures
-Series 16 Minifigures,Collectible Minifigures
-Series 17 Minifigures,Collectible Minifigures
-Series 18 Minifigures,Collectible Minifigures
-Series 19 Minifigures,Collectible Minifigures
-Series 2 Minifigures,Collectible Minifigures
-Series 3 Minifigures,Collectible Minifigures
-Series 4 Minifigures,Collectible Minifigures
-Series 5 Minifigures,Collectible Minifigures
-Series 6 Minifigures,Collectible Minifigures
-Series 7 Minifigures,Collectible Minifigures
-Series 8 Minifigures,Collectible Minifigures
-Series 9 Minifigures,Collectible Minifigures
-Team GB,Collectible Minifigures
-The LEGO Batman Movie,Collectible Minifigures
-The LEGO Movie Series,Collectible Minifigures
-The LEGO Movie Series II,Collectible Minifigures
-The Simpsons,Collectible Minifigures
-The Simpsons Series 2,Collectible Minifigures
-Basic Model,Creator
-Basic Set,Creator
-Creator 3-in-1,Creator
-Creator Expert,Creator
-Early Creator,Creator
-Mecha,Creator
-Model,Creator
-Supplemental,Creator
-Animals,Friends
-Jungle Rescue,Friends
-Fantastic Beasts,Harry Potter
-Cars,Juniors
-DC Comics Super Heroes,Juniors
-Disney Princess,Juniors
-Fantasy,Juniors
-Friends,Juniors
-Jurassic World: Fallen Kingdom,Juniors
-Marvel Super Heroes,Juniors
-Ninjago,Juniors
-Bricktober,Modular Buildings
-Mini,Modular Buildings
-Airjitzu,Ninjago
-Ninjago The Movie,Ninjago
-Advent,Seasonal
-Advent Sub-Set,Seasonal
-Christmas,Seasonal
-Easter,Seasonal
-Halloween,Seasonal
-Thanksgiving,Seasonal
-Valentine,Seasonal
-Alien Conquest,Space
-Blacktron I,Space
-Blacktron II,Space
-Classic Space,Space
-Exploriens,Space
-Futuron,Space
-Galaxy Squad,Space
-Ice Planet 2002,Space
-Insectoids,Space
-Life On Mars,Space
-M:Tron,Space
-Mars Mission,Space
-RoboForce,Space
-Space Police I,Space
-Space Police II,Space
-Space Police III,Space
-Spyrius,Space
-Supplemental,Space
-UFO,Space
-Unitron,Space
-Freemakers,Star Wars
-Mini,Star Wars
-Minifig Pack,Star Wars
-Planet Series 1,Star Wars
-Planet Series 2,Star Wars
-Planet Series 3,Star Wars
-Planet Series 4,Star Wars
-Solo,Star Wars
-Star Wars Clone Wars,Star Wars
-Star Wars Episode 1,Star Wars
-Star Wars Episode 2,Star Wars
-Star Wars Episode 3,Star Wars
-Star Wars Episode 4/5/6,Star Wars
-Star Wars Episode 7,Star Wars
-Star Wars Episode 8,Star Wars
-Star Wars Expanded Universe,Star Wars
-Star Wars Other,Star Wars
-Star Wars Rebels,Star Wars
-Star Wars Rogue One,Star Wars
-Ultimate Collector Series,Star Wars
-Avengers,Super Heroes
-Batman,Super Heroes
-Constraction,Super Heroes
-Guardians of the Galaxy,Super Heroes
-Iron Man,Super Heroes
-Justice League,Super Heroes
-Marvel,Super Heroes
-Spider-Man,Super Heroes
-Superman,Super Heroes
-X-Men,Super Heroes
-The LEGO Movie II,The LEGO Movie
-Architecture,
-Brickheadz,
-LEGO Exclusive,
-LEGO Ideas and CUUSOO,
-LEGO Originals,
+name,parent,taxonomy
+Fire,City,Themes
+Hospital,City,Themes
+Police,City,Themes
+Trains,Collectible Minifigures,Themes
+DFB Minifigures,Collectible Minifigures,Themes
+Disney Series 1,Collectible Minifigures,Themes
+Disney Series 2,Collectible Minifigures,Themes
+Harry Potter and Fantastic Beasts,Collectible Minifigures,Themes
+Ninjago The Movie,Collectible Minifigures,Themes
+Series 1 Minifigures,Collectible Minifigures,Themes
+Series 10 Minifigures,Collectible Minifigures,Themes
+Series 11 Minifigures,Collectible Minifigures,Themes
+Series 12 Minifigures,Collectible Minifigures,Themes
+Series 13 Minifigures,Collectible Minifigures,Themes
+Series 14 Minifigures,Collectible Minifigures,Themes
+Series 15 Minifigures,Collectible Minifigures,Themes
+Series 16 Minifigures,Collectible Minifigures,Themes
+Series 17 Minifigures,Collectible Minifigures,Themes
+Series 18 Minifigures,Collectible Minifigures,Themes
+Series 19 Minifigures,Collectible Minifigures,Themes
+Series 2 Minifigures,Collectible Minifigures,Themes
+Series 3 Minifigures,Collectible Minifigures,Themes
+Series 4 Minifigures,Collectible Minifigures,Themes
+Series 5 Minifigures,Collectible Minifigures,Themes
+Series 6 Minifigures,Collectible Minifigures,Themes
+Series 7 Minifigures,Collectible Minifigures,Themes
+Series 8 Minifigures,Collectible Minifigures,Themes
+Series 9 Minifigures,Collectible Minifigures,Themes
+Team GB,Collectible Minifigures,Themes
+The LEGO Batman Movie,Collectible Minifigures,Themes
+The LEGO Movie Series,Collectible Minifigures,Themes
+The LEGO Movie Series II,Collectible Minifigures,Themes
+The Simpsons,Collectible Minifigures,Themes
+The Simpsons Series 2,Collectible Minifigures,Themes
+Basic Model,Creator,Themes
+Basic Set,Creator,Themes
+Creator 3-in-1,Creator,Themes
+Creator Expert,Creator,Themes
+Early Creator,Creator,Themes
+Mecha,Creator,Themes
+Model,Creator,Themes
+Supplemental,Creator,Themes
+Animals,Friends,Themes
+Jungle Rescue,Friends,Themes
+Fantastic Beasts,Harry Potter,Themes
+Airjitzu,Ninjago,Themes
+Ninjago The Movie,Ninjago,Themes
+Freemakers,Star Wars,Themes
+Mini,Star Wars,Themes
+Minifig Pack,Star Wars,Themes
+Planet Series 1,Star Wars,Themes
+Planet Series 2,Star Wars,Themes
+Planet Series 3,Star Wars,Themes
+Planet Series 4,Star Wars,Themes
+Solo,Star Wars,Themes
+Star Wars Clone Wars,Star Wars,Themes
+Star Wars Episode 1,Star Wars,Themes
+Star Wars Episode 2,Star Wars,Themes
+Star Wars Episode 3,Star Wars,Themes
+Star Wars Episode 4/5/6,Star Wars,Themes
+Star Wars Episode 7,Star Wars,Themes
+Star Wars Episode 8,Star Wars,Themes
+Star Wars Expanded Universe,Star Wars,Themes
+Star Wars Other,Star Wars,Themes
+Star Wars Rebels,Star Wars,Themes
+Star Wars Rogue One,Star Wars,Themes
+Avengers,Super Heroes,Themes
+Batman,Super Heroes,Themes
+Guardians of the Galaxy,Super Heroes,Themes
+Iron Man,Super Heroes,Themes
+Justice League,Super Heroes,Themes
+Marvel,Super Heroes,Themes
+Spider-Man,Super Heroes,Themes
+Superman,Super Heroes,Themes
+Brickheadz,,Themes
