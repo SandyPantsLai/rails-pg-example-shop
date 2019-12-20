@@ -201,7 +201,7 @@ GEM
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     public_suffix (4.0.1)
-    puma (4.2.1)
+    puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
     rack-protection (2.0.7)
@@ -429,7 +429,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip-cloudinary
   pg (>= 0.18, < 2.0)
-  puma (~> 4.0)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   rspec-rails (~> 4.0.0.beta2)
   sass-rails (~> 5.0)
