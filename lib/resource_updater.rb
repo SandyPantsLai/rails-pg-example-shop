@@ -20,5 +20,22 @@ class ResourceUpdater
 	    	product.set_property(property, row_hash[property])
 	    end
   	end
+
+    # Retrieve product image from Rebrickable to create images in Cloudinary and attach to product
+    if row_hash["set_num"] and product.master.images.blank? then
+      path = File.join Rails.root, 'db', 'samples', 'images', "#{row_hash['set_num']}.jpg"
+      
+      if Pathname.new(path).exist? then
+        product.master.images.create!(attachment: open(path, "rb"))
+        puts "attached sample image"
+      else
+        open(path, "wb") do |file|
+          puts "https://cdn.rebrickable.com/media/sets/#{row_hash['set_num']}.jpg"
+          file << open("https://cdn.rebrickable.com/media/sets/#{row_hash['set_num']}.jpg").read
+          product.master.images.create!(attachment: file)
+        end
+      end
+
+    end
   end
 end

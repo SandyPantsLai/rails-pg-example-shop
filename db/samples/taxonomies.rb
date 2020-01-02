@@ -1,6 +1,5 @@
 taxonomies = [
   { name: I18n.t('spree.taxonomies.themes') },
-  { name: I18n.t('spree.taxonomies.parts') },
   { name: I18n.t('spree.taxonomies.category') }
 
 ]

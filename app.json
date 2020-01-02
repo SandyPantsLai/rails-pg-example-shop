@@ -33,7 +33,7 @@
       }
     ],
     "scripts": {
-      "postdeploy": "bin/rails db:seed spree_sample:load"
+      "postdeploy": "bin/rails db:seed store_sample:load_initial"
     },
     "env": {
       "ADMIN_EMAIL": {
