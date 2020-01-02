@@ -57,6 +57,10 @@ You can now launch the app with `bundle exec puma -C config/puma.rb` and view th
 
 If you want to customize Solidus, see their [docs](https://guides.solidus.io/developers/customizations/overview.html). This is an example of [adding a new route](https://github.com/solidusio/solidus/issues/1704#issuecomment-303092098).
 
+## Special Notes
+
+Sample data and images were originally retrieved from [Rebrickable](https://rebrickable.com). If you import your own CSV file of products with a `set_num` column, the worker will try to fetch the set image from Rebrickable and upload that to Cloudinary to create your product images.
+
 ## To Do
 - Add more versions of this store as new branches
 - Update to Rails 6 once the new version of `solidus-auth-devise` is out (so v2.3.0+) which should include a fix for this [issue](https://github.com/solidusio/solidus_auth_devise/issues/174) preventing the app from running properly on Heroku with Rails 6.
