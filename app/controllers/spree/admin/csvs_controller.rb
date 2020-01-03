@@ -3,7 +3,7 @@ require 'cloudinary'
 class Spree::Admin::CsvsController < Spree::Admin::BaseController
 
   def index
-  	@importable_resources = ["Product", "Order"]
+  	@importable_resources = ["Product"]
   end
 
   def upload
@@ -14,8 +14,11 @@ class Spree::Admin::CsvsController < Spree::Admin::BaseController
   end
 
   def import(url, resource_name)
+    redirect_paths = {
+      "Product" => admin_products_path
+    }
     CsvImportWorker.perform_async(url, resource_name)
-	  flash[:notice] = "Importing file"
-    redirect_to admin_products_path
+	  flash[:notice] = "Importing file..."
+    redirect_to redirect_paths[resource_name]
   end
 end

@@ -76,5 +76,8 @@ gem 'solidus_auth_devise'
 # Sidekiq gem for background job processing
 gem 'sidekiq'
 
+# Daru for data analysis
+gem 'daru'
+
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'

@@ -30,16 +30,16 @@ Each branch also has its own button for deployment listed on their respective RE
 
 ## After Deployment
 
-- Run `heroku ps:scale worker=1` to start your Sidekiq worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature
 - Run `heroku labs:enable log-runtime-metrics -a whatever-you-named-your-app` to get more metrics in your logs
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
 - You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin.
+- Run `heroku ps:scale worker=1` to start your Sidekiq worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature. The CSV import allows you to import more products - see [here for an example file](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/db/samples/2018-sets.csv)
 - You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like loader.io instead. See setup instructions [here](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md).
 
 ## Local Development
 
 1. Clone this repo and cd into the directory
-2. Ensure you have [Imagemagick](https://imagemagick.org/script/download.php) installed omn your machine, which is required for Paperclip.
+2. Ensure you have [Imagemagick](https://imagemagick.org/script/download.php) installed own your machine, which is required for Paperclip.
 3. Run `bundle install` and `bundle exec rake db:create`
 4. Now run these generators that set up config, and then run the migrations:
 ```
@@ -47,13 +47,19 @@ bundle exec rails g spree:install
 bundle exec rails g solidus:auth:install
 bundle exec rake db:migrate
 ```
-5. `brew install redis` if you don't have Redis installed
-6. Run `redis-server` in your console
-7. Run Sidekiq in another tab in your console with `bundle exec sidekiq`
+If you are using the CSV import feature:
+5. `export CLOUDINARY_URL=<your Cloudinary info here>`
+6. `brew install redis` if you don't have Redis installed
+7. Run `redis-server` in your console
+8. Run Sidekiq in another tab in your console with `bundle exec sidekiq`
 
 You can now launch the app with `bundle exec puma -C config/puma.rb` and view the frontend at http://localhost:3000/. The admin UI can be found at http://localhost:3000/admin/. 
 
-If you want to customize Solidus see their [docs](https://guides.solidus.io/developers/customizations/overview.html). This is an example of [adding a new route](https://github.com/solidusio/solidus/issues/1704#issuecomment-303092098).
+If you want to customize Solidus, see their [docs](https://guides.solidus.io/developers/customizations/overview.html). This is an example of [adding a new route](https://github.com/solidusio/solidus/issues/1704#issuecomment-303092098).
+
+## Special Notes
+
+Sample data and images were originally retrieved from [Rebrickable](https://rebrickable.com). If you import your own CSV file of products with a `set_num` column, the worker will try to fetch the set image from Rebrickable and upload that to Cloudinary to create your product images.
 
 ## To Do
 - Add more versions of this store as new branches

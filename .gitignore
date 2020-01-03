@@ -28,3 +28,6 @@
 
 # Ignore files added from running generators, i.e. bundle exec rails g spree:install
 /public/spree
+
+*.DS_Store
+
