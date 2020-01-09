@@ -81,3 +81,6 @@ gem 'daru'
 
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'
+
+# Faker gem for creating fake data
+gem 'faker'

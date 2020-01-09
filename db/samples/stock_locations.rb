@@ -1,5 +1,5 @@
 country =  Spree::Country.find_by(iso: 'US')
-location = Spree::StockLocation.find_or_create_by!(name: 'default')
+location = Spree::StockLocation.find_or_create_by!(name: 'Default')
 location.update_attributes!(
   address1: '789 Main Street',
   city: 'Anytown',

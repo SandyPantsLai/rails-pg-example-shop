@@ -34,6 +34,7 @@ Each branch also has its own button for deployment listed on their respective RE
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
 - You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin.
 - Run `heroku ps:scale worker=1` to start your Sidekiq worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature. The CSV import allows you to import more products - see [here for an example file](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/db/samples/2018-sets.csv)
+- You can generate more fake orders if you'd like by using `heroku run bash` and then `bundle exec rake store_sample:generate_orders[number of orders to generate]` in the one-off dyno
 - You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like loader.io instead. See setup instructions [here](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md).
 
 ## Local Development
