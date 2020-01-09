@@ -30,12 +30,15 @@ order = Spree::Order.where(
 end
 
 unless order.line_items.any?
+	location = Spree::StockLocation.find_or_create_by!(name: 'default')
 	products_on_order.each do |product|
 		order.line_items.new(
 	    variant: product.master,
 	    quantity: 1,
 	    price: product.master.price
 	  ).save!
+    stock_item = product.master.stock_items.find_by!(stock_location: location)
+    stock_item.set_count_on_hand(stock_item.count_on_hand + 1)
 	end 
 end
 
@@ -69,25 +72,9 @@ payment.save!
 order.store = Spree::Store.default
 order.save!
 
-while !order.can_complete? do
-	begin
-		order.next! 
-	rescue Spree::Order::InsufficientStock
-		puts "Insufficient stock"
-		order.payment_state = 'pending'
-		order.shipment_state = 'pending'
-		order.save!
-		break
-	end
-end
+order.next! while !order.can_complete?
 
-begin
-	order.complete!
-	order.payment_state = 'paid'
-	order.shipment_state = 'shipped'
-	order.save!
-rescue
-	puts "Unable to set order as complete"
-	order.shipment_state = 'pending'
-	order.save!
-end
+order.complete!
+order.payment_state = 'paid'
+order.shipment_state = 'shipped'
+order.save!
