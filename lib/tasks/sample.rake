@@ -16,4 +16,9 @@ Migrations have been run. Please run 'rake store_sample:load' by itself now.
 
     StoreSample::Engine.load_initial_samples
   end
+
+  desc 'Generate sample orders'
+  task :generate_orders, [:num_of_orders] => [:environment] do |task, args|
+    StoreSample::Engine.generate_orders(args.num_of_orders.to_i)
+  end
 end

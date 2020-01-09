@@ -1,8 +1,9 @@
 name,parent,taxonomy
+Brickheadz,,Themes
 Fire,City,Themes
 Hospital,City,Themes
 Police,City,Themes
-Trains,Collectible Minifigures,Themes
+Trains,City,Themes
 DFB Minifigures,Collectible Minifigures,Themes
 Disney Series 1,Collectible Minifigures,Themes
 Disney Series 2,Collectible Minifigures,Themes
@@ -73,4 +74,3 @@ Justice League,Super Heroes,Themes
 Marvel,Super Heroes,Themes
 Spider-Man,Super Heroes,Themes
 Superman,Super Heroes,Themes
-Brickheadz,,Themes
