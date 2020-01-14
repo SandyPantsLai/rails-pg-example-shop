@@ -81,7 +81,13 @@ order.save!
 
 order.next! while !order.can_complete?
 
-order.complete!
-order.payment_state = 'paid'
-order.shipment_state = 'shipped'
-order.save!
+begin
+	order.complete!
+	order.payment_state = 'paid'
+	order.shipment_state = 'shipped'
+	order.save!
+rescue
+	order.payment_state = 'paid'
+	order.shipment_state = 'pending'
+	order.save!
+end
