@@ -42,7 +42,7 @@ unless order.line_items.any?
     	begin
     		stock_item.set_count_on_hand(10)
     		"Stock count on hand increased by 10"
-    	rescue PG::TRDeadlockDetected
+    	rescue
     		"Skipping add count on hand"
     	end
     end
