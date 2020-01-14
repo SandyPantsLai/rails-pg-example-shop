@@ -38,7 +38,14 @@ unless order.line_items.any?
 	    price: product.master.price
 	  ).save!
     stock_item = product.master.stock_items.find_by!(stock_location: location)
-    stock_item.set_count_on_hand(stock_item.count_on_hand + 1)
+    if stock_item.count_on_hand < 1
+    	begin
+    		stock_item.set_count_on_hand(10)
+    		"Stock count on hand increased by 10"
+    	rescue PG::TRDeadlockDetected
+    		"Skipping add count on hand"
+    	end
+    end
 	end 
 end
 
