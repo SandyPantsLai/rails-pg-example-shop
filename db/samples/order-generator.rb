@@ -77,7 +77,7 @@ credit_card = Spree::CreditCard.where(cc_type: 'visa',
                                       year: 2.years.from_now.year,
                                       last_digits: '1111',
                                       name: Faker::Name.name,
-                                      gateway_customer_profile_id: 'BGS-#{rand(1000,9999)}').first_or_create!
+                                      gateway_customer_profile_id: 'BGS-#{rand(1000,9999)}').create!
 
 payment = order.payments.where(amount: BigDecimal(order.total, 4),
                                  source: credit_card.clone,
