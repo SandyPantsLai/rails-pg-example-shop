@@ -34,6 +34,7 @@ en:
     admin:
       tab:
         csvs: CSVs
+        addresses: Addresses
     taxonomies:
       category: Category
       themes: Themes
