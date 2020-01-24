@@ -2,7 +2,7 @@
 
 <% admin_breadcrumb("Addresses") %>
 
-<p><em>Total new addresses added in the last 30 days:</em> <%= @addresses.length %></p>
+<p><em>Total new addresses added in the last <%= @num_of_days %> days:</em> <%= @addresses.length %></p>
 <% if @addresses.any? %>
   <table class="index" id="listing_addresses" data-hook>
     <colgroup>
