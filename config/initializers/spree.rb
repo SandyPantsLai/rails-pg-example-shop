@@ -57,6 +57,11 @@ Spree::Backend::Config.configure do |config|
     'file',
     condition: -> { Spree.user_class && can?(:admin, Spree.user_class) }, 
     url: :admin_csvs_path)
+  config.menu_items << config.class::MenuItem.new(
+    [:addresses], 
+    'envelope',
+    condition: -> { Spree.user_class && can?(:admin, Spree.user_class) }, 
+    url: :admin_addresses_path)
 end
 
 Spree::Api::Config.configure do |config|

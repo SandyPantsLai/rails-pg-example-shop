@@ -1,0 +1,40 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb("Addresses") %>
+
+<p><em>Total new addresses added in the last 30 days:</em> <%= @addresses.length %></p>
+<% if @addresses.any? %>
+  <table class="index" id="listing_addresses" data-hook>
+    <colgroup>
+       <col style="width: 10%;">
+       <col style="width: 10%;">
+       <col style="width: 50%;">
+       <col style="width: 10%;">
+       <col style="width: 10%;">
+       <col style="width: 10%;">
+    </colgroup>
+    <thead>
+      <tr data-hook="admin_addresses_index_headers">
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+          <tr id="<%= spree_dom_id address %>" data-hook="admin_addresses_index_rows">
+            <td><%= address.firstname %></td>
+            <td><%= address.lastname %></td>
+            <td><%= address.address1 %></td>
+            <td><%= address.city %></td>
+            <td><%= address.state_name %></td>
+            <td><%= address.zipcode %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
