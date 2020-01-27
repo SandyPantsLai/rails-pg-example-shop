@@ -4,7 +4,8 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+# Bundler.require(*Rails.groups)
+Bundler.require(Rails.env, :default)
 
 module RailsPgExampleShop
   class Application < Rails::Application
@@ -48,5 +49,3 @@ module RailsPgExampleShop
     # the framework and any gems in your application.
   end
 end
-
-require 'appoptics_apm'
