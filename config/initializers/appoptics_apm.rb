@@ -49,7 +49,7 @@ if defined?(AppOpticsAPM::Config)
   # On startup the components that are being instrumented will be reported if this is set to true.
   # If true and the log level is 4 or higher this may create extra debug log messages
   #
-  AppOpticsAPM::Config[:verbose] = false
+  AppOpticsAPM::Config[:verbose] = true
 
   #
   # Turn Tracing on or off
