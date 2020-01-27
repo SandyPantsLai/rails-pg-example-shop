@@ -93,6 +93,6 @@ gem 'appsignal'
 gem 'scout_apm'
 
 group :appoptics_apm do
-# ensure this is added last (see application.rb)
-  gem 'appoptics_apm', require: false
+# ensure this group is required last (see application.rb)
+  gem 'appoptics_apm'
 end
