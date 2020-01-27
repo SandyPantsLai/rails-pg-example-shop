@@ -91,3 +91,4 @@ gem 'faker'
 # Additional gems for when these monitoring add-ons are used
 gem 'appsignal'
 gem 'scout_apm'
+gem 'appoptics_apm'
