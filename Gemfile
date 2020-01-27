@@ -87,3 +87,6 @@ gem 'newrelic_rpm'
 
 # Faker gem for creating fake data
 gem 'faker'
+
+# Additional gems for when these monitoring add-ons are used
+gem 'scout_apm'
