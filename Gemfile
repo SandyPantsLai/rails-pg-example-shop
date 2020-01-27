@@ -79,6 +79,9 @@ gem 'sidekiq'
 # Daru for data analysis
 gem 'daru'
 
+# Barnes for Ruby language metrics https://devcenter.heroku.com/articles/language-runtime-metrics-ruby
+gem 'barnes'
+
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'
 

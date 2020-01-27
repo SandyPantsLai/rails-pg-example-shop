@@ -30,7 +30,10 @@ Each branch also has its own button for deployment listed on their respective RE
 
 ## After Deployment
 
-- Run `heroku labs:enable log-runtime-metrics -a whatever-you-named-your-app` to get more metrics in your logs
+- Run the following to get more metrics:
+  - `heroku labs:enable "log-runtime-metrics" -a whatever-you-named-your-app`
+  - `heroku labs:enable "runtime-heroku-metrics" -a whatever-you-named-your-app`
+  - `heroku labs:enable "ruby-language-metrics" -a whatever-you-named-your-app`
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
 - You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin.
 - Run `heroku ps:scale worker=1` to start your Sidekiq worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature. The CSV import allows you to import more products - see [here for an example file](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/db/samples/2018-sets.csv)
