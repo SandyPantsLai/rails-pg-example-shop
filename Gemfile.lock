@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/scoutapp/scout_apm_ruby.git
+  revision: 671e848b9c1b24ae242f4c22d4138a7580fa75d5
+  branch: rails-6-view-instruments
+  specs:
+    scout_apm (2.4.21)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,7 +66,6 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    ast (2.4.0)
     autoprefixer-rails (9.7.1)
       execjs
     awesome_nested_set (3.2.0)
@@ -216,8 +222,6 @@ GEM
       cloudinary (~> 1.1)
     paranoia (2.4.2)
       activerecord (>= 4.0, < 6.1)
-    parser (2.7.0.2)
-      ast (~> 2.4.0)
     pg (1.1.4)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
@@ -311,8 +315,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.6.6)
-      parser
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -462,7 +464,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rspec-rails (~> 4.0.0.beta2)
   sass-rails (~> 5.0)
-  scout_apm
+  scout_apm!
   selenium-webdriver
   sidekiq
   solidus

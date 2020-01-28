@@ -90,7 +90,7 @@ gem 'faker'
 
 # Additional gems for when these monitoring add-ons are used
 gem 'appsignal'
-gem 'scout_apm'
+gem 'scout_apm', git: 'https://github.com/scoutapp/scout_apm_ruby.git', branch: 'rails-6-view-instruments'
 
 group :appoptics_apm do
 # ensure this group is required last (see application.rb)
