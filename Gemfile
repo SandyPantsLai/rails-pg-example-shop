@@ -94,5 +94,5 @@ gem 'scout_apm'
 
 group :appoptics_apm do
 # ensure this group is required last (see application.rb)
-  gem 'appoptics_apm'
+  gem 'appoptics_apm', require: false
 end
