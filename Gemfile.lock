@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/scoutapp/scout_apm_ruby.git
+  revision: 671e848b9c1b24ae242f4c22d4138a7580fa75d5
+  branch: rails-6-view-instruments
+  specs:
+    scout_apm (2.4.21)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,6 +58,11 @@ GEM
       activerecord (>= 3.0)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    appoptics_apm (4.11.0)
+      json
+      no_proxy_fix (~> 0.1.2, >= 0.1.2)
+    appsignal (2.10.1)
+      rack
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -194,6 +206,7 @@ GEM
     netrc (0.11.0)
     newrelic_rpm (6.7.0.359)
     nio4r (2.5.2)
+    no_proxy_fix (0.1.2)
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
@@ -431,6 +444,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appoptics_apm
+  appsignal
   barnes
   bootsnap (>= 1.1.0)
   byebug
@@ -449,6 +464,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rspec-rails (~> 4.0.0.beta2)
   sass-rails (~> 5.0)
+  scout_apm!
   selenium-webdriver
   sidekiq
   solidus

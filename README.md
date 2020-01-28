@@ -22,7 +22,7 @@ The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be p
 
 ## Deployment
 
-Use this button below to deploy the *core* version of the store:
+Use this button below to deploy the *core* version of the store.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master)
 
@@ -34,11 +34,22 @@ Each branch also has its own button for deployment listed on their respective RE
   - `heroku labs:enable "log-runtime-metrics" -a whatever-you-named-your-app`
   - `heroku labs:enable "runtime-heroku-metrics" -a whatever-you-named-your-app`
   - `heroku labs:enable "ruby-language-metrics" -a whatever-you-named-your-app`
+  - `heroku labs:enable "runtime-dyno-metadata" -a whatever-you-named-your-app`
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
-- You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin.
+- You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin. Check your config vars for credentials.
+
+### Important Endpoints
+
+- `/admin/addresses` (`/admin/addresses?q%5Bcreated_since_x_days%5D=<num of days>`) This is a slow transaction that queries using a sequential scan. You can create more addresses quickly by [generating fake orders](https://github.com/SandyPantsLai/rails-pg-example-shop#fake-orders-and-send-traffic)
+
+### If you want to use background jobs... 
 - Run `heroku ps:scale worker=1` to start your Sidekiq worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature. The CSV import allows you to import more products - see [here for an example file](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/db/samples/2018-sets.csv)
+
+### Fake data and send traffic
 - You can generate more fake orders if you'd like by using `heroku run bash` and then `bundle exec rake store_sample:generate_orders[number of orders to generate]` in the one-off dyno
-- You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like loader.io instead. See setup instructions [here](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md).
+- You may want to simulate some traffic so you can see more stuff in New Relic and Librato. A quick way is to use Apache Benchmarking (i.e. ab -n 50000 -c 50 https://your-app-name.herokuapp.com/ will send 50000 requests from 50 concurrent users to that URL) 
+- If you want to simulate more than 50 concurrent users, you may want to use a load testing tool like loader.io instead. See setup instructions [here](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/docs/loaderio-setup.md). 
+- You could also deploy [this](https://github.com/tsykoduk/Mjolnir) as a separate Heroku app, update `TARGETS` with your app's endpoints and scale up its workers to send traffic.
 
 ## Local Development
 
