@@ -17,7 +17,8 @@ class Spree::Admin::CsvsController < Spree::Admin::BaseController
     redirect_paths = {
       "Product" => admin_products_path
     }
-    CsvImportWorker.perform_async(url, resource_name)
+
+    Delayed::Job.enqueue CsvImportWorker.new(url, resource_name)
 	  flash[:notice] = "Importing file..."
     redirect_to redirect_paths[resource_name]
   end

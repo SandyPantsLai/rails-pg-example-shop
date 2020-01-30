@@ -2,7 +2,7 @@
 
 This e-commerce app with sample data is built with [Solidus](https://github.com/solidusio/solidus) with Ruby 2.6.4, Rails 5 and Puma 4 and Sidekiq. It is intended to demo different best practices and use cases in the context of working with Heroku. 
 
-The master branch contains the core e-commerce store to be deployed on the Heroku [Common Runtime](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime). Future branches that remain unmerged represent different versions of this demo store, i.e. with `pgbouncer`.
+This branch is the same as `master` except that it uses Delayed Job instead of Sidekiq + Redis.
 
 A [`free` (if used in Personal account) or `standard-1x` (if app created in Enterprise Team) dyno](https://devcenter.heroku.com/articles/dyno-types) will be used to run your app when you use the Deploy to Heroku button below. A `free`/`standard-1x` worker dyno is also used, though you need to scale this up manually after deployment. 
 
@@ -13,7 +13,6 @@ The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be p
 ##### Necessary for App Functionality
 - [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) - [`hobby-dev` plan](https://elements.heroku.com/addons/heroku-postgresql), Postgres version 11: Primary database for the app
 - [Cloudinary](https://devcenter.heroku.com/articles/cloudinary) - [`starter` plan](https://elements.heroku.com/addons/cloudinary): For static assets, i.e. the product images
-- [Heroku Redis](https://devcenter.heroku.com/articles/heroku-redis) - [`hobby-dev` plan](https://elements.heroku.com/addons/heroku-redis) used by Sidekiq
 
 ##### Logging and Monitoring Tools
 - [Papertrail](https://devcenter.heroku.com/articles/papertrail) - [`choklad` plan](https://elements.heroku.com/addons/papertrail): Tool for searchable logs and other useful logging features 
@@ -22,11 +21,9 @@ The following [add-ons](https://devcenter.heroku.com/articles/add-ons) will be p
 
 ## Deployment
 
-Use this button below to deploy the *core* version of the store.
+Use this button below to deploy the *delayed_job* version of the store.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master)
-
-Each branch also has its own button for deployment listed on their respective READMEs.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SandyPantsLai/rails-pg-example-shop/tree/delayed_job)
 
 ## After Deployment
 
@@ -45,7 +42,7 @@ Each branch also has its own button for deployment listed on their respective RE
 - `/admin/addresses` (`/admin/addresses?q%5Bcreated_since_x_days%5D=<num of days>`) This is a slow transaction that queries using a sequential scan. You can create more addresses quickly by [generating fake orders](https://github.com/SandyPantsLai/rails-pg-example-shop#fake-orders-and-send-traffic)
 
 ### If you want to use background jobs... 
-- Run `heroku ps:scale worker=1` to start your Sidekiq worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature. The CSV import allows you to import more products - see [here for an example file](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/db/samples/2018-sets.csv)
+- Run `heroku ps:scale worker=1` to start your worker. This is only used for the CSV feature, i.e. https://your-app-name.herokuapp.com/admin/csvs, so no need to scale this up if you aren't going to use that feature. The CSV import allows you to import more products - see [here for an example file](https://github.com/SandyPantsLai/rails-pg-example-shop/tree/master/db/samples/2018-sets.csv)
 
 ### Fake data and send traffic
 - You can generate more fake orders if you'd like by using `heroku run bash` and then `bundle exec rake store_sample:generate_orders[number of orders to generate]` in the one-off dyno
@@ -66,9 +63,7 @@ bundle exec rake db:migrate
 ```
 If you are using the CSV import feature:
 5. `export CLOUDINARY_URL=<your Cloudinary info here>`
-6. `brew install redis` if you don't have Redis installed
-7. Run `redis-server` in your console
-8. Run Sidekiq in another tab in your console with `bundle exec sidekiq`
+6. In another tab, start your worker with `bundle exec rake jobs:work`
 
 You can now launch the app with `bundle exec puma -C config/puma.rb` and view the frontend at http://localhost:3000/. The admin UI can be found at http://localhost:3000/admin/. 
 

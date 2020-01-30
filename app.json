@@ -19,7 +19,6 @@
         }
       },
       "cloudinary:starter",
-      "heroku-redis:hobby-dev",
       "papertrail:choklad",
       "newrelic:wayne",
       "librato:development"
@@ -65,9 +64,6 @@
       },
       "SECRET_KEY_BASE": {
         "generator": "secret"
-      },
-      "SIDEKIQ_CONCURRENCY": {
-        "value": "2"
       },
       "WEB_CONCURRENCY": {
         "value": "2"

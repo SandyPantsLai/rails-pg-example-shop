@@ -73,8 +73,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'solidus'
 gem 'solidus_auth_devise'
 
-# Sidekiq gem for background job processing
-gem 'sidekiq'
+# Delayed Job gem for background job processing
+gem 'delayed_job_active_record'
 
 # Daru for data analysis
 gem 'daru'
