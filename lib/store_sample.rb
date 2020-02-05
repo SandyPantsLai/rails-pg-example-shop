@@ -23,5 +23,10 @@ module StoreSample
         Store::Sample.load_sample('order-generator', true)
       end
     end
+
+    def self.generate_promo_code_batches(promo_name, base_code, number_of_codes, per_code_usage_limit)
+       worker = BatchPromoCodeCreateWorker.new(promo_name, base_code, number_of_codes, per_code_usage_limit)
+       worker.perform
+    end
   end
 end

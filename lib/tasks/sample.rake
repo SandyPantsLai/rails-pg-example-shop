@@ -21,4 +21,19 @@ Migrations have been run. Please run 'rake store_sample:load' by itself now.
   task :generate_orders, [:num_of_orders] => [:environment] do |task, args|
     StoreSample::Engine.generate_orders(args.num_of_orders.to_i)
   end
+
+  desc 'Generate batches of promo codes'
+  task :generate_promo_code_batches, [
+    :promo_name,
+    :base_code, 
+    :number_of_codes, 
+    :per_code_usage_limit
+  ] => [:environment] do |task, args|
+    StoreSample::Engine.generate_promo_code_batches(
+      args.promo_name,
+      args.base_code,
+      args.number_of_codes.to_i,
+      args.per_code_usage_limit.to_i
+    )
+  end
 end
