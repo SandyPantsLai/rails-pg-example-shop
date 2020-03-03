@@ -38,7 +38,7 @@ Each branch also has its own button for deployment listed on their respective RE
 - You can access the customer UI at whatever-you-named-your-app.herokuapp.com.
 - You can access the admin UI at whatever-you-named-your-app.herokuapp.com/admin. Check your config vars for credentials.
 - After logging in as an admin, you should see `rack-mini-profiler`'s speed badge in the upper left of each page.
-- The app includes gems for other monitoring tools so you should be able to add whatever APM add-on you wish from the Heroku Elements Marketplace.
+- The app includes gems for other monitoring tools so you should be able to add whatever APM add-on you wish from the Heroku Elements Marketplace. If you want to use Scout APM at the same time as AppOptics though, please check the comments in the `Gemfile` to ensure you are using the correct version of `scout_apm`.
 
 ### Important Endpoints
 
