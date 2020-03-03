@@ -82,6 +82,12 @@ gem 'daru'
 # Barnes for Ruby language metrics https://devcenter.heroku.com/articles/language-runtime-metrics-ruby
 gem 'barnes'
 
+# Profilers
+gem 'rack-mini-profiler' 
+gem 'flamegraph'
+gem 'stackprof'
+gem 'memory_profiler' # Allows use of rack-mini-profiler’s GC features.
+
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'
 
