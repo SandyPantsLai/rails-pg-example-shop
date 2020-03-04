@@ -50,4 +50,14 @@ module RailsPgExampleShop
   end
 end
 
-require 'appoptics_apm'
+if ENV["APPSIGNAL_PUSH_API_KEY"].present?
+  require 'appsignal'
+end
+
+if ENV["SCOUT_KEY"].present?
+  require 'scout_apm'
+end
+
+if ENV["APPOPTICS_SERVICE_KEY"].present?
+  require 'appoptics_apm'
+end

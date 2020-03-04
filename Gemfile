@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -82,6 +82,12 @@ gem 'daru'
 # Barnes for Ruby language metrics https://devcenter.heroku.com/articles/language-runtime-metrics-ruby
 gem 'barnes'
 
+# Profilers
+gem 'rack-mini-profiler' 
+gem 'flamegraph'
+gem 'stackprof'
+gem 'memory_profiler' # Allows use of rack-mini-profiler’s GC features.
+
 # New Relic APM agent for Ruby
 gem 'newrelic_rpm'
 
@@ -89,11 +95,14 @@ gem 'newrelic_rpm'
 gem 'faker'
 
 # Additional gems for when these monitoring add-ons are used
-gem 'appsignal'
-# This specific version of scout_apm is used because of an incompatibility issue when used with the appoptics_apm gem
-gem 'scout_apm', git: 'https://github.com/scoutapp/scout_apm_ruby.git', branch: 'rails-6-view-instruments'
+gem 'appsignal', require: false
+
+gem 'scout_apm', require: false
+# If you want to use Scout APM and AppOptics APM at the same time, comment out the previous line 
+# and uncomment the line below to avoid an incompatibility issue with the appoptics_apm gem
+# gem 'scout_apm', git: 'https://github.com/scoutapp/scout_apm_ruby.git', branch: 'rails-6-view-instruments', require: false
 
 group :appoptics_apm do
 # ensure this gem is required last as per Dev Center instructions (see require in application.rb)
-  gem 'appoptics_apm'
+  gem 'appoptics_apm', require: false
 end
